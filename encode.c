@@ -1,10 +1,3 @@
-// Reads data from file and splits it into CSP pkts
-// "hoffcsp" packet format
-
-// TODO:
-// - Makefile
-// - add spec for hoffcsp_pkt
-
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
