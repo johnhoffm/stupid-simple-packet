@@ -50,7 +50,7 @@ int main() {
     size_t bytesRead;
     while ((bytesRead = fread(buffer, sizeof(char), PKT_SIZE, stdin)) > 0) {
         decodeRaw(&pkt, buffer);
-        prettyPrintPkt(&pkt);
+        printPayload(&pkt);
     }
     
     return 0;
