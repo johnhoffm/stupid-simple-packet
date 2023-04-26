@@ -2,7 +2,11 @@
 
 A very simple packet encoding for UCLA Bruinspace's flatsat. This is a test and proof of concept. Do not use this for real space applications.
 
-## How to use
+## Build
+
+Use `make` to build encode and decode executables. Use `make clean` to remove executables.
+
+## Usage
 Encode and decode read from stdin and write to stdout. See test.sh and below code for an example. Data streams sent to decode must be valid packets and streams must be in multiples of 128 bytes.
 
 ``` cat data.txt | ./encode > raw_packet_data ```
