@@ -8,6 +8,8 @@
 #define HDR_SIZE 6
 #define PAYLOAD_SIZE 122 // PKT_SIZE - HDR_SIZE
 
+const char* IN_DIR = "packets/";
+
 struct hoffcsp_pkt {
     uint32_t preamble; 
     uint16_t length;
@@ -43,15 +45,30 @@ void prettyPrintPkt(struct hoffcsp_pkt* pkt){
     printf("\n");
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+    // printf("aaa");
+    if (argc != 2){
+        fprintf(stderr, "Incorrect number of arguments. Usage: %s packet.hoff\n", argv[0]);
+        return 1;
+    }
+
+    const char *path = argv[1];
+    FILE *fp = fopen(path, "r");
+    if (fp == NULL){
+        fprintf(stderr, "Cannot open file.\n");
+        return 1;
+    }
+
     uint8_t buffer[PKT_SIZE] = {0};
     struct hoffcsp_pkt pkt = {0};
 
     size_t bytesRead;
-    while ((bytesRead = fread(buffer, sizeof(char), PKT_SIZE, stdin)) > 0) {
+    while ((bytesRead = fread(buffer, sizeof(char), PKT_SIZE, fp)) > 0) {
         decodeRaw(&pkt, buffer);
         printPayload(&pkt);
     }
+
+    fclose(fp);
     
     return 0;
 }
