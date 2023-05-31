@@ -14,7 +14,7 @@ Encode and decode read from stdin and write to stdout. See test.sh and below cod
 ``` cat raw_packet_data | ./decode > data.txt ```
 
 ## Format
-The format is very simple. Each packet is 128 bytes. There are only three fields: preamble (0xFFFFFFFF), length, and payload.
+The format is very simple. Each packet is 128 bytes. There are only three fields: preamble (0xFFFFFFFF), length, and payload. Telecommands and telemetry go inside the payload section. Information on them can be found in [command_structure.md](command_structure.md).
 
 <!-- ChatGPT generated ASCII -->
 <!-- "give me ascii art of a table similar to Ipv4's packet header, but for the following struct: <code>" -->
