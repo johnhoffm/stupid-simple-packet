@@ -2,3 +2,7 @@ encode
 decode
 .vscode
 packets
+
+# output files for OFDM_Test_1.py
+other.txt
+out.hoff
